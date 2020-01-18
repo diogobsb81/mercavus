@@ -1,0 +1,14 @@
+td.col-1,
+th.col-1 {
+	width: 20%;
+}
+
+td.col-2,
+th.col-2 {
+	width: 40%;
+}
+
+td.col-3,
+th.col-3 {
+	width: 20%;
+}

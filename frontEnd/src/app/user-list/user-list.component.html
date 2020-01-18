@@ -1,0 +1,73 @@
+<div class="container-fluid" style="margin-top: 70px;">
+  <div class="row">
+    <div class="col-3">
+      <form [formGroup]="userForm" (ngSubmit)="addUser()">
+        <div class="form-group">
+          <tr>
+            <td>
+              <input formControlName="name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+            </td>
+            <td>
+              <button class="btn btn-dark">Add</button>
+            </td>
+          </tr>
+      </div>
+      </form>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users;">
+            <td (click)="userDetails(user)"> {{ user.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-7">
+      <form [formGroup]="hobbieForm" (ngSubmit)="addHobbie()">
+        <div class="form-group">
+          <tr>
+            <td class="col-1">
+            <select class="form-control" formControlName="passionLevel">
+              <option *ngFor="let passion of passionList" [value]="passion">
+                {{passion}}
+              </option>
+            </select>
+            </td>
+            <td class="col-2">
+              <input formControlName="name" type="text" name="name" class="form-control" id="name" aria-describedby="passionLevelHelp" placeholder="Enter Name">
+            </td>
+            <td class="col-3">
+            <input formControlName="year" type="text" name="year" class="form-control" id="year" aria-describedby="yearHelp" placeholder="Enter Year">
+          </td>
+          <button class="btn btn-dark">Add</button>
+          </tr>
+      </div>
+      </form>
+      <table *ngIf="hobbies.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Passion</th>
+            <th>Hobbie</th>
+            <th>Year</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hobbie of hobbies">
+            <td>{{ hobbie.passionLevel }}</td>
+            <td> {{ hobbie.name }}</td>
+            <td> {{ hobbie.year }}</td>
+            <td>
+              <button type="button" (click)="removeHobbie(hobbie._id)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="hobbies.length === 0"> <td colspan="14">No data available</td></div>
+    </div>
+  </div>
+</div>
